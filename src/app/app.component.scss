@@ -1,0 +1,16 @@
+#app-container {
+   display: inline-flex;    // background-color: aquamarine;
+    justify-content: center;
+}
+#table {
+    width: 30vw;
+    flex: 0 1 1;
+
+    &app-table {
+        width: 400px;
+    }
+
+}
+#selection {
+    width: 40vw;
+}

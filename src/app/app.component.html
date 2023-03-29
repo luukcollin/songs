@@ -1,0 +1,23 @@
+<div id="app-container">
+  <div id="selection">
+    <span>Filter by artist: </span>
+    <input type="text" name="artist-filter" [(ngModel)]="filterq" (ngModelChange)="updateVisibleSongs()" />
+    <app-table [columns]="songProperties" [rows]="visibleSongs" [selectedRow]="dbSelectedSong"
+      (clickedSong)="changeDBSongSelection($event)" (starredSong)="starSong($event)"
+      (removeSong)="removeSongWithId($event)"></app-table>
+  </div>
+  <div id="table">
+
+    <h1>Selection:</h1>
+    <p *ngIf="selectedSong">{{selectedSong.id}}</p>
+    <label>Artist:</label>
+    <input type="text" name="artist" [(ngModel)]="newArtist" />
+    <label>Title:</label>
+    <input type="text" name="title" [(ngModel)]="newTitle" />
+    <label>Genre:</label>
+    <select name="music-genre" [(ngModel)]="newGenre">
+      <option *ngFor="let genre of genreOptions" [value]="genre">{{genre}}</option>
+    </select>
+  </div>
+  <button [disabled]="!newSongValuesArePresent()" (click)="addSong()">Add song!</button>
+</div>
